@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32</title>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>ESP32</h1>
+    <h2>Count: <span id="count">0</span></h2>
+
+    <script>
+        const socket = io();
+
+        socket.on("connect", () => {
+            console.log("Connected to WebSocket");
+        });
+
+        socket.on("update_count", (data) => {
+            document.getElementById("count").innerText = data.count;
+        });
+    </script>
+</body>
+</html>
